@@ -1,9 +1,11 @@
 # vault-aws-cloudformation
 
 ## Introduction
+
 This repository contains code for building Amazon Machine Images (AMI) and a generic Cloudformation template. The AMI and template can be used to spin up a production-ready Vault cluster.
 
 ## What does it build?
+
 The Cloudformation templates published by this pipeline stand up the following configuration:
 
 - VPC with 3 public and 3 private subnets
@@ -16,10 +18,14 @@ The Cloudformation templates published by this pipeline stand up the following c
 - The Vault cluster will be ready in 10-15 minutes. The cluster comes up in an uninitialized state. The API listens on port 8200 and is accessible from the Internet.
 
 ## Snippets
+
 These command line snippets are useful for quickly spinning up a new Vault cluster
 
-```
-aws cloudformation create-stack --region us-east-2 --stack-name SeanC-Vault-USE2 --capabilities CAPABILITY_IAM --template-url https://hc-cat-app.s3.amazonaws.com/aws_vault_cf.yml --tags Key=owner,Value=scarolan@hashicorp.com Key=TTL,Value=72 --parameters ParameterKey=FQDN,ParameterValue=scvaulteast.hashidemos.io ParameterKey=Route53ZoneId,ParameterValue=Z2VGUC188F45PC ParameterKey=ClusterZones,ParameterValue=\"us-east-2a,us-east-2b,us-east-2c\" ParameterKey=SSHKeyName,ParameterValue=scarolan
+``` bash
+USERNAME="rpeteuil"
+SSHKEY="rpeteuil"
 
-aws cloudformation create-stack --region us-west-2 --stack-name SeanC-Vault-USW2 --capabilities CAPABILITY_IAM --template-url https://hc-cat-app.s3.amazonaws.com/aws_vault_cf.yml --tags Key=owner,Value=scarolan@hashicorp.com Key=TTL,Value=72 --parameters ParameterKey=FQDN,ParameterValue=scvaultwest.hashidemos.io ParameterKey=Route53ZoneId,ParameterValue=Z2VGUC188F45PC ParameterKey=ClusterZones,ParameterValue=\"us-west-2a,us-west-2b,us-west-2c\" ParameterKey=SSHKeyName,ParameterValue=scarolan
+aws cloudformation create-stack --region us-east-2 --stack-name "${USERNAME}-Vault-USE2" --capabilities CAPABILITY_IAM --template-url https://hc-cat-app.s3.amazonaws.com/aws_vault_cf.yml --tags Key=owner,Value="${USERNAME}@hashicorp.com" Key=TTL,Value=72 --parameters ParameterKey=FQDN,ParameterValue="${USERNAME}vaulteast.hashidemos.io" ParameterKey=Route53ZoneId,ParameterValue=Z2VGUC188F45PC ParameterKey=ClusterZones,ParameterValue=\"us-east-2a,us-east-2b,us-east-2c\" ParameterKey=SSHKeyName,ParameterValue="$SSHKEY"
+
+aws cloudformation create-stack --region us-west-2 --stack-name "${USERNAME}-Vault-USW2" --capabilities CAPABILITY_IAM --template-url https://hc-cat-app.s3.amazonaws.com/aws_vault_cf.yml --tags Key=owner,Value="${USERNAME}@hashicorp.com" Key=TTL,Value=72 --parameters ParameterKey=FQDN,ParameterValue="${USERNAME}vaultwest.hashidemos.io" ParameterKey=Route53ZoneId,ParameterValue=Z2VGUC188F45PC ParameterKey=ClusterZones,ParameterValue=\"us-west-2a,us-west-2b,us-west-2c\" ParameterKey=SSHKeyName,ParameterValue="$SSHKEY"
 ```
