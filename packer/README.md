@@ -1,6 +1,6 @@
 # Packer for Vault on AWS Cloudformation
 
-This directory containers packer templates and related scripts for building Vault for AWS Cloudformation. See the ~/.circleci/config.yml to see the CI/CD workflow settings and the Vault and Consul AMI build stages.
+This directory containers packer templates and related scripts for building Vault on AWS.
 
 Some post launch config needs to be done to make the Vault cluster functional. These steps include setting up Consul ACLs and configuring auto-unseal with AWS KMS. We handle these through UserData scripts.
 

@@ -23,7 +23,7 @@
             "Resource": [
                 "arn:aws:route53:::hostedzone/*",
                 "arn:aws:route53:::change/*",
-                "arn:aws:acm:us-east-1:513920815743:certificate/*"
+                "arn:aws:acm:::certificate/*"
             ]
         },
         {
@@ -210,7 +210,7 @@
             "Sid": "SecretsManagerUSEast1",
             "Effect": "Allow",
             "Action": "secretsmanager:*",
-            "Resource": "arn:aws:secretsmanager:us-east-1:513920815743:secret:*"
+            "Resource": "arn:aws:secretsmanager:::secret:*"
         },
         {
             "Sid": "CloudformationAccess",
