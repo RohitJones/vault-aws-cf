@@ -1,32 +1,32 @@
 ---
 AWSTemplateFormatVersion: '2010-09-09'
 Mappings:
-  RegionMap: 
+  RegionMap:
       us-east-2:
         vault: ami-08006b73dec2156d9
         consul: ami-00b526abe4bbe2432
       us-west-2:
         vault: ami-08cc40ca7ad17c25c
         consul: ami-00ade25690347af4b
-Metadata: 
-  AWS::CloudFormation::Interface: 
-    ParameterGroups: 
-      - 
-        Label: 
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
           default: "Required Parameters"
-        Parameters: 
+        Parameters:
           - FQDN
           - ClusterZones
           - SSHKeyName
-      - 
-        Label: 
+      -
+        Label:
           default: "Optional Parameters"
-        Parameters: 
+        Parameters:
           - Route53Enabled
           - Route53ZoneId
           - BastionAmiId
-    ParameterLabels: 
-      FQDN: 
+    ParameterLabels:
+      FQDN:
         default: "What hostname will you use for your Vault cluster?"
       ClusterZones:
         default: "Choose three Availability Zones:"
@@ -200,7 +200,7 @@ Resources:
     Type: AWS::IAM::InstanceProfile
     Properties:
       Path: "/"
-      Roles: 
+      Roles:
       - !Ref VaultClusterServerRole
   VaultDNSRecord:
     Type: AWS::Route53::RecordSet
@@ -638,7 +638,7 @@ Resources:
           ##############################################################
           # Enable Consul Auto-Discovery via AWS Tags
           ##############################################################
-          
+
           cat << EOF > /etc/vault.d/consul-storage.hcl
           datacenter = "dc1"
           primary_datacenter = "dc1"
@@ -666,7 +666,7 @@ Resources:
           systemctl restart consul-storage
 
           ##############################################################
-          # Vault and Consul client config steps 
+          # Vault and Consul client config steps
           ##############################################################
 
           # Fetch the Vault agent token, update our config files
@@ -738,7 +738,7 @@ Resources:
           ##############################################################
           # Enable Consul Auto-Discovery via AWS Tags
           ##############################################################
-          
+
           cat << EOF > /etc/vault.d/consul-storage.hcl
           datacenter = "dc1"
           primary_datacenter = "dc1"
@@ -766,7 +766,7 @@ Resources:
           systemctl restart consul-storage
 
           ##############################################################
-          # Vault and Consul client config steps 
+          # Vault and Consul client config steps
           ##############################################################
 
           # Fetch the Vault agent token, update our config files
@@ -838,7 +838,7 @@ Resources:
           ##############################################################
           # Enable Consul Auto-Discovery via AWS Tags
           ##############################################################
-          
+
           cat << EOF > /etc/vault.d/consul-storage.hcl
           datacenter = "dc1"
           primary_datacenter = "dc1"
@@ -866,7 +866,7 @@ Resources:
           systemctl restart consul-storage
 
           ##############################################################
-          # Vault and Consul client config steps 
+          # Vault and Consul client config steps
           ##############################################################
 
           # Fetch the Vault agent token, update our config files
@@ -937,7 +937,7 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
 
-          # This machine is responsible for generating the Consul Agent Token 
+          # This machine is responsible for generating the Consul Agent Token
           # and storing it in AWS Secrets Manager so the other machines can read it.
 
           ##############################################################
