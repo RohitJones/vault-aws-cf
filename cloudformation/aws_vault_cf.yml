@@ -3,7 +3,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Mappings:
   RegionMap:
       us-west-2:
-        vault: ami-04f4b740434e42be2
+        vault: ami-0c2165b3f29b781e1
         consul: ami-016d5d73d7db33467
 Metadata:
   AWS::CloudFormation::Interface:
