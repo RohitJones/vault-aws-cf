@@ -372,7 +372,7 @@ Resources:
       HealthCheckIntervalSeconds: 5
       HealthCheckProtocol: HTTPS
       HealthCheckTimeoutSeconds: 3
-      HealthCheckPath: "/v1/sys/health?standbyok=true"
+      HealthCheckPath: "/v1/sys/health"
       HealthyThresholdCount: 3
       Matcher:
         HttpCode: '200'
