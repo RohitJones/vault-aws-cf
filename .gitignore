@@ -13,3 +13,6 @@ packer_cache/
 
 # Inspec files
 inspec.lock
+
+# SSL certs
+*.pem

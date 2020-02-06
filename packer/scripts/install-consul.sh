@@ -11,8 +11,6 @@
 # https://aws.amazon.com/cloudformation/pp/B00O7WM7QW
 
 
-
-
 readonly DEFAULT_INSTALL_PATH="/usr/local/bin/consul-storage"
 readonly DEFAULT_CONSUL_USER="vault"
 readonly DEFAULT_CONSUL_PATH="/etc/vault.d"
