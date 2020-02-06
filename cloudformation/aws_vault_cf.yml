@@ -5,6 +5,9 @@ Mappings:
       us-west-2:
         vault: ami-0fd4fb2ec2a1d1053
         consul: ami-016d5d73d7db33467
+      us-east-1:
+        vault: ami-0c4b73c6fd3189b3a
+        consul: ami-09f7bee50e46a3c28
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
