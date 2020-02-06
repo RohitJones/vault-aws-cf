@@ -979,7 +979,8 @@ Resources:
           # This is the bootstrap, or management token. It has superuser powers.
           MT=`curl --request PUT http://127.0.0.1:8500/v1/acl/bootstrap |cut -d'"' -f4`
           echo ${!MT} > /tmp/management_token
-          echo ${!MT} > $HOME/consul_root_token
+          # Uncomment if you want to keep a copy of the bootstrap token on the host.
+          #echo ${!MT} > $HOME/consul_root_token
 
           # Store the management token in AWS Secrets Manager for safekeeping
           aws secretsmanager update-secret --secret-id ${ConsulBootstrapToken} --description "Consul Bootstrap Token - Created" --secret-string file:///tmp/management_token --kms-key-id ${VaultKMSKey} --region ${AWS::Region}
