@@ -1,5 +1,7 @@
 # vault-aws-cloudformation
 
+NOTE: This repository is not being actively maintained. Contact your HashiCorp representative or community leader for the latest on installing Vault on AWS.
+
 ## Introduction
 
 This repository contains code for building Amazon Machine Images (AMI) and a generic Cloudformation template. The AMI and template can be used to spin up a production-ready Vault cluster.
