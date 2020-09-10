@@ -1,6 +1,6 @@
 # Packer for Vault on AWS Cloudformation
 
-This directory containers packer templates and related scripts for building Vault on AWS. You'll need an S3 Bucket for your install artifcacts (See the --help for install-vault.sh and install-consul.sh for more info.)
+This directory containers packer templates and related scripts for building Vault on AWS. You'll need an S3 Bucket for your install artifcacts (See the --help for install-vault.sh and install-consul.sh for more info.). The install artifacts must be placed on the S3 Bucket under a directory named "install_files". Note that it is recommended to rename your private key and certificate to match the defeaults values of "privkey.pem" and "fullchain.pem" respectively
 
 Some post launch config needs to be done to make the Vault cluster functional. These steps include setting up Consul ACLs and configuring auto-unseal with AWS KMS. We handle these through UserData scripts.
 
